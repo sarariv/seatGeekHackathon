@@ -4,4 +4,9 @@ class VenuesController < ApplicationController
 
 	end
 
+  def search
+
+  end
+
+
 end
