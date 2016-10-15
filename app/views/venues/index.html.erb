@@ -3,89 +3,42 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Seak Geak For All! #thisis2016</h2>
-                    <h3>Let's search for the best seats!</h3>
+                    <h2 class="section-heading">Seat Geak For All! #thisis2016</h2>
+                    <h3>Find your accessible seats with one touch of a button! </h3>
 
+                    <form class='form'>
+                        <input type="text" name="search", class="search-bar", size="60" placeholder="Venue, Artist, Date" value="<%=@search%>">
+                    <div class="accessible-options">
+                         <input name='left aisle seats' type='checkbox'>Left Aisle
+                              <input name='right aisle seats' type='checkbox' >Right Aisle
+                         <%=check_box_tag 'ground floor'%> Ground Floor
+                          <%= check_box_tag 'wheelcahir access'%>  Wheelchair Access <br>
+                         <%= check_box_tag 'close to exit'%> Close to Exit
+                         <%= check_box_tag 'assisted listening device'%> Assisted Lisetening device
+                        <%= check_box_tag 'quiet space'%> Quiet Space
+                    </div>
+                        <input type="submit" value="Submit" class="btn btn-primary btn-lg">
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="features" class="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-heading">
-                        <h2>Unlimited Features, Unlimited Fun</h2>
-                        <p class="text-muted">Check out what you can do with this app theme!</p>
-                        <hr>
-                    </div>
-                </div>
+    <section>
+      <div class="container">
+            <div class="row" class="search-results">
+                <% if @search == nil %>
+                <% else %>
+                 <a href="venues/<%=@location.id%>"><%= @search_result["name"] %></a> <br/>
+                <%= @search_result["url"] %>
+            <% end %>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="device-container">
-                        <div class="device-mockup iphone6_plus portrait white">
-                            <div class="device">
-                                <div class="screen">
-                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="img/demo-screen-1.jpg" class="img-responsive" alt=""> </div>
-                                <div class="button">
-                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-screen-smartphone text-primary"></i>
-                                    <h3>Device Mockups</h3>
-                                    <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-camera text-primary"></i>
-                                    <h3>Flexible Use</h3>
-                                    <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-present text-primary"></i>
-                                    <h3>Free to Use</h3>
-                                    <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-lock-open text-primary"></i>
-                                    <h3>Open Source</h3>
-                                    <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    </div>
     </section>
-
-    <section class="cta">
-        <div class="cta-content">
-            <div class="container">
-
-                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
-            </div>
-        </div>
-        <div class="overlay"></div>
-    </section>
-
+<iframe width="1400" height="600" frameborder="0" style="border:0"
+ src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAzbkgKDoOrJ5OhHICG9FHU_OYBPV0m81w&q=400+lafayette+st+new+york"
+ allowfullscreen>
+</iframe>
     <section id="contact" class="contact bg-primary">
         <div class="container">
             <h2>We <i class="fa fa-heart"></i> new friends!</h2>
