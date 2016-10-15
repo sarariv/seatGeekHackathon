@@ -15,15 +15,17 @@ ActiveRecord::Schema.define(version: 20161015154713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "venues", force: :cascade do |t|
     t.string   "name",             null: false
     t.integer  "sgID",             null: false
     t.string   "location",         null: false
-    t.string   "left_aisle",       null: false
-    t.string   "right_aisle",      null: false
-    t.string   "closest_to_exit",  null: false
-    t.boolean  "quiet",            null: false
+    t.hstore   "left_aisle",       null: false
+    t.hstore   "right_aisle",      null: false
+    t.hstore   "closest_to_exit",  null: false
+    t.string   "first_floor",      null: false
+    t.hstore   "quiet",            null: false
     t.boolean  "wheelchair",       null: false
     t.boolean  "listening_device", null: false
     t.datetime "created_at",       null: false
