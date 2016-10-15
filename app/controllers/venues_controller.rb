@@ -9,4 +9,8 @@ class VenuesController < ApplicationController
 
 	end
 
+  def show
+    @venue = Venue.find_by(id: params[:id])
+  end
+
 end
