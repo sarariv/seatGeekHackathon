@@ -29,11 +29,21 @@
             <div class="row" class="search-results">
                 <% if @search == nil %>
                 <% else %>
-                 <a href="venues/<%=@location.id%>"><%= @search_result["name"] %></a> <br/>
-                <%= @search_result["url"] %>
+                <% @search_result["venues"].map do |result| %>
+                    <% @venue_match.map do |match| %>
+
+                        <% if match["name"] == result["name"]%>
+                        <a href="venues/<%=match.id%>"><%=match["name"]%></a><br/>
+                        <% else %>
+                    <%= result["name"] %><br/>
+                        <% end %>
+                    <% end %>
+                    <%= result["display_location"].titleize %><br/><br/>
+                <% end %>
+
             <% end %>
             </div>
-    </div>
+     </div>
     </section>
 <iframe width="1400" height="600" frameborder="0" style="border:0"
  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAzbkgKDoOrJ5OhHICG9FHU_OYBPV0m81w&q=400+lafayette+st+new+york"
