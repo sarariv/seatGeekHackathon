@@ -14,7 +14,7 @@
                          <%=check_box_tag 'ground floor'%> Ground Floor
                           <%= check_box_tag 'wheelcahir access'%>  Wheelchair Access <br>
                          <%= check_box_tag 'close to exit'%> Close to Exit
-                         <%= check_box_tag 'assisted listening device'%> Assisted Lisetening device
+                         <%= check_box_tag 'assisted listening device'%> Assisted Listening device
                         <%= check_box_tag 'quiet space'%> Quiet Space
                     </div>
                         <input type="submit" value="Submit" class="btn btn-primary btn-lg">
@@ -27,15 +27,17 @@
     <section>
       <div class="container">
             <div class="row" class="search-results">
+
+    <!-- QUESTION TO TEAM : SHOULD WE TURN INTO PARTIAL? - SR -->
                 <% if @search == nil %>
                 <% else %>
                 <% @search_result["venues"].map do |result| %>
-                    <% @venue_match.map do |match| %>
+                    <% @venue_match.each do |match| %>
 
                         <% if match["name"] == result["name"]%>
-                        <a href="venues/<%=match.id%>"><%=match["name"]%></a><br/>
+                            <a href="venues/<%=match.id%>"><%=match["name"]%></a><br/>
                         <% else %>
-                    <%= result["name"] %><br/>
+                            <%= result["name"] %><br/>
                         <% end %>
                     <% end %>
                     <%= result["display_location"].titleize %><br/><br/>
