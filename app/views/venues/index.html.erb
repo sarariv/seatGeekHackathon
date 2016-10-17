@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Seat Geek For All! #thisis2016</h2>
+                    <h2 class="section-heading">SeatGeek For All! #thisis2016</h2>
                     <h3>Find your accessible seats with one touch of a button! </h3>
 
                     <form class='form'>
@@ -14,7 +14,7 @@
                          <%=check_box_tag 'ground floor'%> Ground Floor
                           <%= check_box_tag 'wheelcahir access'%>  Wheelchair Access <br>
                          <%= check_box_tag 'close to exit'%> Close to Exit
-                         <%= check_box_tag 'assisted listening device'%> Assisted Lisetening device
+                         <%= check_box_tag 'assisted listening device'%> Assisted Listening device
                         <%= check_box_tag 'quiet space'%> Quiet Space
                     </div>
                         <input type="submit" value="Submit" class="btn btn-primary btn-lg">
@@ -27,13 +27,24 @@
     <section>
       <div class="container">
             <div class="row" class="search-results">
+
+    <!-- QUESTION TO TEAM : SHOULD WE TURN INTO PARTIAL? - SR -->
                 <% if @search == nil %>
                 <% else %>
-                 <a href="venues/<%=@location.id%>"><%= @search_result["name"] %></a> <br/>
-                <%= @search_result["url"] %>
+                <% @search_result["venues"].map do |result| %>
+                    <% @venue_match.each do |match| %>
+
+                        <% if match["name"] == result["name"]%>
+                            <a href="venues/<%=match.id%>"><%=match["name"]%></a><br/>
+                        <% end %>
+                    <% end %>
+                    <%= result["name"] %><br/>
+                    <%= result["display_location"].titleize %><br/><br/>
+                <% end %>
+
             <% end %>
             </div>
-    </div>
+     </div>
     </section>
 <iframe width="1400" height="600" frameborder="0" style="border:0"
  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAzbkgKDoOrJ5OhHICG9FHU_OYBPV0m81w&q=400+lafayette+st+new+york"

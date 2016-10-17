@@ -1,4 +1,24 @@
 <h1><%= @venue.name %><br/></h1>
-<%= @venue.left_aisle%><br/>
+<%= @sgdata["address"] %><br/>
+<%= @sgdata["extended_address"] %><br/>
+<a href="<%= @sgdata['url'] %>">Buy Tickets at SeatGeek.com</a><br/>
+
+
+
+<h2>Accessiblity<br/></h2>
+<%= @venue.left_aisle %><br/>
 <%= @venue.right_aisle %><br/>
-<%= @venue.quiet %>
+<%= @venue.closest_to_exit %><br/>
+<%= @venue.quiet %><br/>
+<%= @venue.first_floor %><br/>
+<% if @venue.wheelchair == true %>
+  <%= "Wheelchair Accessible" %><br/>
+<% else %>
+  <%= "Not Wheelchair Accessible" %><br/>
+<% end %>
+
+<% if @venue.listening_device == true %>
+ <%= "Assisted Listening Devices Available" %><br/>
+<% else %>
+  <%= "Assisted Listening Devices Not Available" %><br/>
+<% end %>
